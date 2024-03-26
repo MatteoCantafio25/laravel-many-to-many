@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(5)->create();
+        // \App\Models\User::factory(5)->create();
 
         
         \App\Models\User::factory()->create([
@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'matteo@ciao.it',
         ]);
         
-        $this->call(TypeSeeder::class);
+        $this->call([TypeSeeder::class, TechnologySeeder::class]);
         
-        \App\Models\Project::factory(10)->create();
+        \App\Models\Project::factory(5)->create();
 
     }
 }
