@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Type;
+use App\Models\Technology;
+use App\Models\Project;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
@@ -39,5 +41,15 @@ class ProjectFactory extends Factory
             'content' => fake()->paragraphs(15, true),
             'image' => $img_url,
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Project $project){
+            $tech_ids = Technology::pluck('id')->toArray();
+            $project_techs = array_filter($tech_ids, fn() => rand(0,1));
+
+            $project->technologies()->attach($project_techs);
+        });
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Project;
 use App\Models\Technology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,6 +14,8 @@ class TechnologySeeder extends Seeder
      */
     public function run(): void
     {
+        // $project_ids = Project::pluck('id')->toArray();
+        
         $technologies = [
             ['label' => 'HTML', 'color' => 'danger'],
             ['label' => 'CSS', 'color' => 'primary'],
@@ -31,6 +34,18 @@ class TechnologySeeder extends Seeder
             $new_tech->color = $tech['color'];
 
             $new_tech ->save();
+
+            $tech_projects = [];
+
+            //? primo metodo 
+            /* foreach($project_ids as $project_id){
+                if(rand(0, 1))$tech_projects[] = $project_id;
+            } */
+
+            //? secondo metodo
+            // $tech_projects = array_filter($project_ids, fn() => rand(0,1));
+
+            // $new_tech->projects()->attach($tech_projects);
         }
     }
 }
