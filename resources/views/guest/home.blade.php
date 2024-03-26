@@ -32,6 +32,22 @@
                     <div class="col">
                         <h5 class="card-title mb-3">{{$project->title}}</h5>
                         <h6 class="card-subtitle mb-2 text-body-secondary">{{$project->created_at}}</h6>
+                        <!-- Tipi -->
+                        <div>
+                            @if($project->type)
+                                <span class="badge" style="background-color: {{$project->type->color}}">{{$project->type->label}}</span>
+                            @else
+                                None 
+                            @endif
+                        </div>
+                        <!-- Tecnologie -->
+                        <div>
+                            @forelse ($project->technologies as $tech)
+                                <span class="badge rounded-pill text-bg-{{$tech->color}}">{{$tech->label}}</span>
+                            @empty
+                                None
+                            @endforelse
+                        </div>
                         <p class="card-text">{{$project->content}}</p>
                     </div>
                 </div>
