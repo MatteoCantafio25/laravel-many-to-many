@@ -17,7 +17,7 @@ class TechnologySeeder extends Seeder
             ['label' => 'HTML', 'color' => 'danger'],
             ['label' => 'CSS', 'color' => 'primary'],
             ['label' => 'ES6', 'color' => 'warning'],
-            ['label' => 'Bootstrap', 'color' => 'DARK'],
+            ['label' => 'Bootstrap', 'color' => 'danger'],
             ['label' => 'Vue', 'color' => 'success'],
             ['label' => 'SQL', 'color' => 'secondary'],
             ['label' => 'PHP', 'color' => 'info'],

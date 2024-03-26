@@ -74,7 +74,29 @@
                 @enderror
             </div>
         </div>
+        <div class="col-10 d-flex justify-content-start">
+            <div class="mt-3">
+                <div class="form-group @error('technologies') is-invalid @enderror">
+                    <p>Select Technologies for this project</p>
+                    @foreach ($technologies as $tech)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="technologies[]" id="{{"tech-$tech->id"}}" 
+                            value="{{$tech->id}}" @if(in_array($tech->id, old('technologies', $prev_techs ?? []))) checked @endif>
+                            <label class="form-check-label" for="{{"tech-$tech->id"}}">{{$tech->label}}</label>
+                        </div>
+                    @endforeach
+                </div>
+                @error('technologies')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+        </div>
     </div>
+
+    <hr>
+
     <div class="d-flex align-items-center justify-content-end gap-2">
         <button type="submit" class="btn btn-success">Save</button>
         <button type="reset" class="btn btn-secondary">Empty the field</button>
